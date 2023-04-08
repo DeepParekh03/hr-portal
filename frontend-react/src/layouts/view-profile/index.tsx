@@ -4,7 +4,7 @@ import Navbar from "components/navbar";
 import Sidebar from "components/sidebar";
 import Footer from "components/footer/Footer";
 import routes from "routes";
-import Profile from "views/admin/profile";
+import Profile from "./Profile";
 import { UserContext } from "providers/UserContext";
 
 export default function Admin(props: { [x: string]: any }) {

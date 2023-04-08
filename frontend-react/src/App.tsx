@@ -1,16 +1,24 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import ViewLayout from "layouts/view-profile";
-import ViewProfile from "layouts/view-employee";
+import ViewLayout from "layouts/view-employee";
+import ViewProfile from "layouts/view-profile";
 import AdminLayout from "layouts/admin";
 import AuthLayout from "layouts/auth";
 import UserLayout from "layouts/user";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "providers/UserContext";
 import SignIn from "layouts/auth";
 import Profile from "views/admin/profile";
+import alanBtn from "@alan-ai/alan-sdk-web";
+
 const App = () => {
   const { user } = useContext(UserContext);
+  useEffect(() => {
+    alanBtn({
+      key: "8bed6778465e8cbf2efbe9e7be22715a2e956eca572e1d8b807a3e2338fdd0dc/stage",
+    });
+  }, []);
+
   if (!user) {
     return (
       <Routes>

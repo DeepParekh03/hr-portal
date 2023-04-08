@@ -24,6 +24,7 @@ const FindJobs = (props: Props) => {
         "https://codeshahstrahojayega-production.up.railway.app/getAllJobs"
       );
       const data = await response.json();
+      console.log(data);
       setJobs(data);
     } catch (error) {
       console.log(error);

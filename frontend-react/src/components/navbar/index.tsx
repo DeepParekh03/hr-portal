@@ -18,7 +18,7 @@ const Navbar = (props: {
   brandText: string;
   secondary?: boolean | string;
 }) => {
-  const {user,logout} = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
   // console.log(user.displayName);
   const { onOpenSidenav, brandText } = props;
   const [darkmode, setDarkmode] = React.useState(false);
@@ -72,9 +72,9 @@ const Navbar = (props: {
           <FiAlignJustify className="h-5 w-5" />
         </span>
         {/* start Notification */}
-        
+
         {/* start Horizon PRO */}
-        
+
         <div
           className="cursor-pointer text-gray-600"
           onClick={() => {
@@ -104,7 +104,7 @@ const Navbar = (props: {
           }
           children={
             <div className="flex h-48 w-56 flex-col justify-start rounded-[20px] bg-white bg-cover bg-no-repeat shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
-              <div className="mt-3 ml-4">
+              <div className="ml-4 mt-3">
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-bold text-navy-700 dark:text-white">
                     👋 Hey, {user?.displayName}
@@ -113,10 +113,13 @@ const Navbar = (props: {
               </div>
               <div className="mt-3 h-px w-full bg-gray-200 dark:bg-white/20 " />
 
-              <div className="mt-3 ml-4 flex flex-col">
-               
+              <div className="ml-4 mt-3 flex flex-col">
+                <div id="google_translate_element" className="btn-primary btn">
+                  google translate
+                </div>
+
                 <button
-                onClick={logout}
+                  onClick={logout}
                   className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"
                 >
                   Log Out
