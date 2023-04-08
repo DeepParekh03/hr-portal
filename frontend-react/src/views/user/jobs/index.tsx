@@ -1,8 +1,20 @@
 import React from 'react'
 import Banner from './components/Banner'
+import JobCard from './components/JobCard'
+import NFt2 from "assets/img/nfts/Nft2.png";
+import NFt4 from "assets/img/nfts/Nft4.png";
+import NFt3 from "assets/img/nfts/Nft3.png";
+
 type Props = {}
 
 const FindJobs = (props: Props) => {
+    const [freelance, setFreelance] = React.useState(true)
+    const [fullTime, setFullTime] = React.useState(false)
+
+    const setCategory = () => {
+        setFreelance(!freelance)
+        setFullTime(!fullTime)
+    }
   return (
     <div className="min-h-screen mt-3 grid h-full grid-cols-1 gap-5 ">
       <div className="col-span-1 h-fit w-full xl:col-span-1 2xl:col-span-2">
@@ -13,22 +25,55 @@ const FindJobs = (props: Props) => {
           </h4>
           <ul className="mt-4 flex items-center justify-between md:mt-0 md:justify-center md:!gap-5 2xl:!gap-12">
             <li>
-              <a
+              <button
                 className="text-base font-medium text-brand-500 hover:text-brand-500 dark:text-white"
-                href=" "
+                onClick={setCategory}
               >
                 Freelance
-              </a>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 className="text-base font-medium text-brand-500 hover:text-brand-500 dark:text-white"
-                href=" "
+                onClick={setCategory}
               >
                 Full time
-              </a>
+              </button>
             </li>
           </ul>
+        </div>
+        <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-3">
+          {freelance && <>
+            <JobCard
+            
+            title="Abstract Colors"
+            author="Esthera Jackson"
+            price="0.91"
+            image={NFt3}
+          />
+          <JobCard
+            
+            title="ETH AI Brain"
+            author="Nick Wilson"
+            price="0.7"
+            image={NFt2}
+          />
+          <JobCard
+           
+            title="Mesh Gradients"
+            author="Will Smith"
+            price="2.91"
+            image={NFt4}
+          /></>}
+          {fullTime && <>
+            <JobCard
+            
+            title="Abstract Colors"
+            author="Esthera Jackson"
+            price="0.91"
+            image={NFt3}
+          />
+         </>}
         </div>
       </div>
       
