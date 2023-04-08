@@ -26,6 +26,8 @@ app.use(morgan("tiny"));
 
 app.use("/", router);
 
-app.listen(9000, () => {
-  console.log("Server running on 9000");
+const PORT = process.env.PORT || 9000;
+
+app.listen(PORT, () => {
+  console.log(`Server is up and running on ${PORT}`);
 });
