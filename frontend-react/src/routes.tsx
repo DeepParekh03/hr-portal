@@ -31,6 +31,7 @@ import {
 
 import {BsListStars} from "react-icons/bs";
 import ProfileVerify from "views/user/verify";
+import PushAlerts from "views/admin/push-alerts";
 
 const routes = [
   {
@@ -54,7 +55,7 @@ const routes = [
     layout:"/admin",
     path:"push-alerts",
     icon:<MdAddAlert className="h-6 w-6" />,
-    component:<DataTables />,
+    component:<PushAlerts />,
 
   },
   {
