@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import DashIcon from "components/icons/DashIcon";
 // chakra imports
 
-export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
+export function SidebarLinks(props: { routes: RoutesType[] }) {
   // Chakra color mode
   let location = useLocation();
 
@@ -20,7 +20,7 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
       if (
         route.layout === "/admin" ||
         route.layout === "/auth" ||
-        route.layout === "/rtl" 
+        route.layout === "/rtl"
       ) {
         return (
           <Link key={index} to={route.layout + "/" + route.path}>
@@ -39,7 +39,7 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
                   {route.icon ? route.icon : <DashIcon />}{" "}
                 </span>
                 <p
-                  className={`leading-1 ml-4 flex ${
+                  className={`leading-1 flex ms-4 ${
                     activeRoute(route.path) === true
                       ? "font-bold text-navy-700 dark:text-white"
                       : "font-medium text-gray-600"
@@ -49,17 +49,16 @@ export const SidebarLinks = (props: { routes: RoutesType[] }): JSX.Element => {
                 </p>
               </li>
               {activeRoute(route.path) ? (
-                <div className="absolute right-0 top-px h-9 w-1 rounded-lg bg-brand-500 dark:bg-brand-400" />
+                <div className="absolute top-px h-9 w-1 rounded-lg bg-brand-500 end-0 dark:bg-brand-400" />
               ) : null}
             </div>
           </Link>
         );
       }
-      
     });
   };
   // BRAND
   return <>{createLinks(routes)}</>;
-};
+}
 
 export default SidebarLinks;

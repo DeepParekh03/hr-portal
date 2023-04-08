@@ -4,10 +4,14 @@ import React from "react";
 import MainDashboard from "views/admin/default";
 import NFTMarketplace from "views/admin/marketplace";
 import Profile from "views/admin/profile";
+
 import DataTables from "views/admin/tables";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
+
+//user imports
+import ProfileUser from "views/user/default";
 
 // Icon Imports
 import {
@@ -48,7 +52,13 @@ const routes = [
     icon: <MdPerson className="h-6 w-6" />,
     component: <Profile />,
   },
-  
+  {
+    name:"User Profile",
+    layout:"/user",
+    path:"default",
+    icon:<MdPerson className="h-6 w-6" />,
+    component:<ProfileUser />
+  }
   
 ];
 export default routes;
