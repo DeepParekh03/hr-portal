@@ -3,9 +3,7 @@ import os
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 import asyncio
-from googletrans import Translator
 
-translator = Translator()
 app = Flask(__name__)
 
 
@@ -30,7 +28,7 @@ def whatsapp():
     media_content_type = request.values.get('MediaContentType0')
     # Create a Twilio MessagingResponse object
     response = MessagingResponse()
-    
+
     # Add a message to the response
     # if(incoming_message == "gujurati"):
     #     translator.translate('Please enter your name', dest='gu')
