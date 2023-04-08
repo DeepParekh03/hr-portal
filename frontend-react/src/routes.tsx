@@ -12,6 +12,7 @@ import SignIn from "views/auth/SignIn";
 
 //user imports
 import ProfileUser from "views/user/default";
+import FindJobs from "views/user/jobs";
 
 // Icon Imports
 import {
@@ -21,6 +22,12 @@ import {
   MdPerson,
   MdLock,
 } from "react-icons/md";
+
+import {
+  RiUserSearchFill,
+  RiSuitcaseLine
+} from "react-icons/ri";
+import ProfileVerify from "views/user/verify";
 
 const routes = [
   {
@@ -58,6 +65,20 @@ const routes = [
     path:"default",
     icon:<MdPerson className="h-6 w-6" />,
     component:<ProfileUser />
+  },
+  {
+    name:"Verify User",
+    layout:"/user",
+    path:"verify",
+    icon:<RiUserSearchFill className="h-6 w-6" />,
+    component:<ProfileVerify />
+  },
+  {
+    name:"Find Jobs",
+    layout:"/user",
+    path:"jobs",
+    icon:<RiSuitcaseLine className="h-6 w-6" />,
+    component:<FindJobs />
   }
   
 ];

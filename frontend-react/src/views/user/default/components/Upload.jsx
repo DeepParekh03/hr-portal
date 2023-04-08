@@ -10,13 +10,13 @@ const Upload = () => {
     // Trigger a click event on the file input element
     const fileInput = document.getElementById("fileInput");
     fileInput.click();
-    console.log(resume);
   };
   const handleUpload = (resume, setResume) => {
     if (!storage) {
       console.error("Firebase Storage is not initialized");
       return;
     }
+    console.log("uploading resume", resume.file);
     const pdfRef = ref(storage, `pdfs/${resume.name}`);
     uploadBytes(pdfRef, resume.file)
       .then((snapshot) => {
