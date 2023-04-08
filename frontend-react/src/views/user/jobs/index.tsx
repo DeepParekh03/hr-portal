@@ -67,7 +67,6 @@ const FindJobs = (props: Props) => {
           /></>}
           {fullTime && <>
             <JobCard
-            
             title="Abstract Colors"
             author="Esthera Jackson"
             price="0.91"
