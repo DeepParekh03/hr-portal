@@ -21,7 +21,7 @@ const FindJobs = (props: Props) => {
   const getAllJobs = async () => {
     try {
       const response = await fetch(
-        "https://d38f-103-208-226-234.ngrok-free.app/getAllJobs"
+        "https://codeshahstrahojayega-production.up.railway.app/getAllJobs"
       );
       const data = await response.json();
       setJobs(data);
