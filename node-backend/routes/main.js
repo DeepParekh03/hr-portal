@@ -10,7 +10,7 @@ router.post('/updateUser', updateUser)
 router.post('/getUserbyID', getUserbyID)
 router.get('/getAllUsers', getAllUsers)
 router.post('/addEmployee', updateUserStatus)
-router.post('/')
+// router.post('/')
 
 router.post("/addJob", addJob)
 router.get("/getAllJobs", getAllJobs)

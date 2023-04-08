@@ -11,6 +11,7 @@ import {
       update,
   } from "firebase/database";
 
+
 function generateUUID() {
   let d = new Date().getTime();
   if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
@@ -72,6 +73,17 @@ export const getJobbyID = (req, res, next) => {
       pathRef,
       (snapshot) => {
         const jobData = snapshot.val();
+        jobData["applicantarray"] = [];
+        for (const [userid, value] of Object.entries(jobData["applicants"])) {
+          const userpathRef = ref(db, "/users/"+userid)
+          onValue(
+            userpathRef,
+            (snapshot1) => {
+              const userData = snapshot1.val();
+              jobData["applicantarray"].push(userData);
+            }
+          ) 
+        }
         res.send(jobData);
       },
       (error) => {
