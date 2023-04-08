@@ -21,7 +21,7 @@ function CameraComponent({ }: Props) {
       </h1>
       <div className="grid h-full grid-cols-1 gap-5 lg:!grid-cols-2">
         <div className="flex flex-col gap-y-2">
-          {!image ? <div className='z-1'><Camera ref={camera} aspectRatio={16 / 9} /></div>: <div className='z-1'><img src={image} alt='Taken photo' /></div>}
+          {!image ? <div className='z-1'><Camera ref={camera} aspectRatio={16 / 9} errorMessages={{}}/></div>: <div className='z-1'><img src={image} alt='Taken photo' /></div>}
           <div className="flex items-center justify-center gap-2 mt-[-6%]  ">
             {!image && <button className='btn btn-primary z-100 absolute' onClick={() => setImage(camera.current.takePhoto())}><AiOutlineCamera size={40} /></button>}
             {image && <button className='btn btn-primary z-100 absolute' onClick={() => setImage(null)}><IoMdReverseCamera size={40}/></button>}

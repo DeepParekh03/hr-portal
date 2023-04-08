@@ -2,7 +2,7 @@ import React from "react";
 
 // Admin Imports
 import MainDashboard from "views/admin/default";
-import NFTMarketplace from "views/admin/marketplace";
+import EmployeeList from "views/admin/marketplace";
 import Profile from "views/admin/profile";
 
 import DataTables from "views/admin/tables";
@@ -21,13 +21,17 @@ import {
   MdBarChart,
   MdPerson,
   MdLock,
+  MdAddAlert
 } from "react-icons/md";
 
 import {
   RiUserSearchFill,
   RiSuitcaseLine
 } from "react-icons/ri";
+
+import {BsListStars} from "react-icons/bs";
 import ProfileVerify from "views/user/verify";
+import PushAlerts from "views/admin/push-alerts";
 
 const routes = [
   {
@@ -38,26 +42,21 @@ const routes = [
     component: <MainDashboard />,
   },
   {
-    name: "NFT Marketplace",
+    name: "Employee List",
     layout: "/admin",
-    path: "nft-marketplace",
-    icon: <MdOutlineShoppingCart className="h-6 w-6" />,
-    component: <NFTMarketplace />,
+    path: "employee-list",
+    icon: <BsListStars className="h-6 w-6" />,
+    component: <EmployeeList />,
     secondary: true,
   },
+ 
   {
-    name: "Data Tables",
-    layout: "/admin",
-    icon: <MdBarChart className="h-6 w-6" />,
-    path: "data-tables",
-    component: <DataTables />,
-  },
-  {
-    name: "Profile",
-    layout: "/admin",
-    path: "profile",
-    icon: <MdPerson className="h-6 w-6" />,
-    component: <Profile />,
+    name:"Push alerts",
+    layout:"/admin",
+    path:"push-alerts",
+    icon:<MdAddAlert className="h-6 w-6" />,
+    component:<PushAlerts />,
+
   },
   {
     name:"User Profile",
