@@ -21,15 +21,12 @@ import {
   MdBarChart,
   MdPerson,
   MdLock,
-  MdAddAlert
+  MdAddAlert,
 } from "react-icons/md";
 
-import {
-  RiUserSearchFill,
-  RiSuitcaseLine
-} from "react-icons/ri";
-
-import {BsListStars} from "react-icons/bs";
+import { RiUserSearchFill, RiSuitcaseLine } from "react-icons/ri";
+import AddEmployee from "views/admin/add-employee";
+import { BsListStars, BsPersonPlus } from "react-icons/bs";
 import ProfileVerify from "views/user/verify";
 import PushAlerts from "views/admin/push-alerts";
 
@@ -49,36 +46,41 @@ const routes = [
     component: <EmployeeList />,
     secondary: true,
   },
- 
   {
-    name:"Push alerts",
-    layout:"/admin",
-    path:"push-alerts",
-    icon:<MdAddAlert className="h-6 w-6" />,
-    component:<PushAlerts />,
-
+    name: "Add Employees",
+    layout: "/admin",
+    path: "add-employees",
+    icon: <BsPersonPlus className="h-6 w-6" />,
+    component: <AddEmployee />,
+    secondary: true,
   },
   {
-    name:"User Profile",
-    layout:"/user",
-    path:"default",
-    icon:<MdPerson className="h-6 w-6" />,
-    component:<ProfileUser />
+    name: "Push alerts",
+    layout: "/admin",
+    path: "push-alerts",
+    icon: <MdAddAlert className="h-6 w-6" />,
+    component: <PushAlerts />,
   },
   {
-    name:"Verify User",
-    layout:"/user",
-    path:"verify",
-    icon:<RiUserSearchFill className="h-6 w-6" />,
-    component:<ProfileVerify />
+    name: "User Profile",
+    layout: "/user",
+    path: "default",
+    icon: <MdPerson className="h-6 w-6" />,
+    component: <ProfileUser />,
   },
   {
-    name:"Find Jobs",
-    layout:"/user",
-    path:"jobs",
-    icon:<RiSuitcaseLine className="h-6 w-6" />,
-    component:<FindJobs />
-  }
-  
+    name: "Verify User",
+    layout: "/user",
+    path: "verify",
+    icon: <RiUserSearchFill className="h-6 w-6" />,
+    component: <ProfileVerify />,
+  },
+  {
+    name: "Find Jobs",
+    layout: "/user",
+    path: "jobs",
+    icon: <RiSuitcaseLine className="h-6 w-6" />,
+    component: <FindJobs />,
+  },
 ];
 export default routes;
