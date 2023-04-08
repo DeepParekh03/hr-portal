@@ -45,7 +45,6 @@ export const updateJob = (req, res, next) => {
     const jobid = jsonData["jobid"];
     jsonData["jobid"] = null;
     const pathRef = ref(db, "/jobs/"+jobid)
-    
     // Get a key for a new Post.
     // const newPostKey = push(child(ref(db), 'org/'+job.email?.split('@')[0])).key;
     // Write the new post's data simultaneously in the posts list and the job's post list.
@@ -54,6 +53,9 @@ export const updateJob = (req, res, next) => {
     update(ref(db), updates);
     res.status(200).json({ message:"Success"});
 }
+
+
+
 
 export const getAllJobs = (req, res, next) => {
     const db = getDatabase()
@@ -70,8 +72,7 @@ export const getJobbyID = (req, res, next) => {
       pathRef,
       (snapshot) => {
         const jobData = snapshot.val();
-        console.log(jobData);
-        res.send(jobData)
+        res.send(jobData);
       },
       (error) => {
         res.status(404).send("job not found")

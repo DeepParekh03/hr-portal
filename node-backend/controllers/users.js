@@ -57,6 +57,27 @@ export const updateUser = (req, res, next) => {
     res.status(200).json({ message:"Success"});
 }
 
+export const updateUserStatus = (req, res, next) => {
+    const jsonData = req.body;
+    console.log(jsonData)
+    const db = getDatabase()
+    // set(ref(db, 'users'), {
+    const postData = jsonData;
+    const userid = jsonData["userid"];
+    jsonData["userid"] = null;
+    jsonData["isEmployee"] = true;
+    const pathRef = ref(db, "/users/"+userid)
+    
+    // Get a key for a new Post.
+    // const newPostKey = push(child(ref(db), 'org/'+user.email?.split('@')[0])).key;
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    const updates = {};
+    updates['/users/'+userid] = jsonData
+    update(ref(db), updates);
+    res.status(200).json({ message:"Success"});
+}
+
+
 export const getAllUsers = (req, res, next) => {
     const db = getDatabase()
     onValue(ref(db, 'users/'), (snapshot) => {
