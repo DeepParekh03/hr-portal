@@ -22,6 +22,23 @@ export const UserProvider = ({ children }) => {
     userPassword: "",
   });
 
+  const [jobData, setJobData] = useState({
+    jobTitle: "Main chef position",
+    jobDescription:
+      "As a chef, you will be responsible for creating and executing high-quality dishes in a timely manner. You will manage the kitchen staff, maintain inventory, and ensure that the kitchen adheres to health and safety standards.",
+    jobSalary: "$350/day",
+    jobExperience: "3 yrs",
+    jobType: "Freelance",
+  });
+
+  const handleJobChange = (e) => {
+    const { name, value } = e.target;
+    setJobData({
+      ...jobData,
+      [name]: value,
+    });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserData({
@@ -97,20 +114,27 @@ export const UserProvider = ({ children }) => {
   };
 
   const googleLogin = async () => {
+    let userObj = {};
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      Swal.fire({
-        icon: "success",
-        title: "Google Login Successful",
-        text: "You have successfully logged in with Google.",
-      }).then(() => {
-        if (user.email === "bhavya.gor9999@gmail.com") {
-          navigate("/admin/default");
-        } else {
-          navigate("/user/default");
-        }
-      });
+      await signInWithPopup(auth, provider)
+        .then((result) => {
+          userObj = result.user;
+          console.log(userObj);
+        })
+        .then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "Google Login Successful",
+            text: "You have successfully logged in.",
+          }).then(() => {
+            if (userObj.email === "bhavya.gor9999@gmail.com") {
+              navigate("/admin/default");
+            } else {
+              navigate("/user/default");
+            }
+          });
+        });
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -129,6 +153,9 @@ export const UserProvider = ({ children }) => {
     userData,
     setUserData,
     handleInputChange,
+    jobData,
+    setJobData,
+    handleJobChange,
   };
 
   return (

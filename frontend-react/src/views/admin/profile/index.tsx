@@ -2,7 +2,7 @@ import Card from "components/card";
 import { AiOutlineStar } from "react-icons/ai";
 import { BsEmojiNeutral } from "react-icons/bs";
 import { VscSmiley } from "react-icons/vsc";
-import {BiSad} from "react-icons/bi";
+import { BiSad } from "react-icons/bi";
 import Banner from "./components/Banner";
 import General from "./components/General";
 import Notification from "./components/Notification";
@@ -23,18 +23,30 @@ const ProfileOverview = () => {
             <h1 className="text-xl font-bold text-navy-700 dark:text-white">
               Add review
             </h1>
-            <input type="text" placeholder="Type here" className="input input-bordered w-full " />
+            <input
+              type="text"
+              placeholder="Type here"
+              className="input-bordered input w-full "
+            />
             <h1 className="text-xl font-bold text-navy-700 dark:text-white">
               Add Flag
             </h1>
-            <div className="flex gap-4 items-center justify-center">
-            <button className="btn btn-error "><BiSad size="30"/></button>
-            <button className="btn btn-warning "><BsEmojiNeutral size="30"/></button>
-            <button className="btn btn-accent "><VscSmiley size="30"/></button>
-            <button className="btn btn-primary btn-success"><AiOutlineStar size="30"/></button>
+            <div className="flex items-center justify-center gap-4">
+              <button className="btn-error btn ">
+                <BiSad size="30" />
+              </button>
+              <button className="btn-warning btn ">
+                <BsEmojiNeutral size="30" />
+              </button>
+              <button className="btn-accent btn ">
+                <VscSmiley size="30" />
+              </button>
+              <button className="btn-primary btn-success btn">
+                <AiOutlineStar size="30" />
+              </button>
             </div>
             <div>
-            <button className="btn btn-primary btn-block">Submit</button>
+              <button className="btn-primary btn-block btn">Submit</button>
             </div>
           </Card>
         </div>

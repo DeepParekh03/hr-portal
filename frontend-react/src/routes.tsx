@@ -13,7 +13,7 @@ import SignIn from "views/auth/SignIn";
 //user imports
 import ProfileUser from "views/user/default";
 import FindJobs from "views/user/jobs";
-
+import JobPostings from "views/admin/job-postings";
 // Icon Imports
 import {
   MdHome,
@@ -22,6 +22,8 @@ import {
   MdPerson,
   MdLock,
   MdAddAlert,
+  MdOutlineAddHomeWork,
+  MdStorage,
 } from "react-icons/md";
 
 import { RiUserSearchFill, RiSuitcaseLine } from "react-icons/ri";
@@ -29,7 +31,7 @@ import AddEmployee from "views/admin/add-employee";
 import { BsListStars, BsPersonPlus } from "react-icons/bs";
 import ProfileVerify from "views/user/verify";
 import PushAlerts from "views/admin/push-alerts";
-
+import ListEmployee from "views/admin/list-employee";
 const routes = [
   {
     name: "Main Dashboard",
@@ -55,11 +57,27 @@ const routes = [
     secondary: true,
   },
   {
+    name: "Applicants List",
+    layout: "/admin",
+    path: "list-applicants",
+    icon: <MdStorage className="h-6 w-6" />,
+    component: <ListEmployee />,
+    secondary: true,
+  },
+  {
     name: "Push alerts",
     layout: "/admin",
     path: "push-alerts",
     icon: <MdAddAlert className="h-6 w-6" />,
     component: <PushAlerts />,
+  },
+  {
+    name: "Post job openings",
+    layout: "/admin",
+    path: "post-job-openings",
+    icon: <MdOutlineAddHomeWork className="h-6 w-6" />,
+    component: <JobPostings />,
+    secondary: true,
   },
   {
     name: "User Profile",

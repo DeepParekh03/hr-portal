@@ -1,22 +1,92 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Camera } from "react-camera-pro";
 import { VscVerified } from "react-icons/vsc";
-import { AiOutlineCamera } from "react-icons/ai";
+import { AiOutlineCamera, AiOutlineCheck } from "react-icons/ai";
 import General from "./General";
 import { IoMdReverseCamera } from "react-icons/io";
+import Swal from "sweetalert2";
+import { TiTickOutline } from "react-icons/ti";
+import { RxCross2 } from "react-icons/rx";
+import { UserContext } from "providers/UserContext";
+import { useNavigate } from "react-router-dom";
 type Props = {};
 
 function CameraComponent({}: Props) {
   const camera = useRef(null);
   const [image, setImage] = useState(null);
-
+  const [isProfileFetched, setIsProfileFetched] = useState(true);
+  const navigate = useNavigate();
+  const { userData } = useContext(UserContext);
   useEffect(() => {
     console.log({ image });
   }, [image]);
+
+  const verifyProfile = () => {
+    if (image) {
+      const formData = new FormData();
+      formData.append("image", image);
+      fetch(
+        "https://7ce2-2402-3a80-657-8e7c-f037-a0a8-e4f7-1935.ngrok-free.app/walkin",
+        {
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+            "Content-Type": "multipart/form-data",
+          },
+          method: "POST",
+          body: formData,
+        }
+      )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+          });
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please take a photo!",
+      });
+    }
+  };
+
+  const addEmployee = () => {
+    fetch("http://localhost:9000/addEmployee", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: userData.id,
+      }),
+    })
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Employee Added",
+          text: "Employee has been added successfully!",
+        }).then(() => {
+          navigate("/admin/default");
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
+      });
+  };
+
   return (
     <div className="flex w-full flex-col gap-5">
       <h1 className="text-bold text-3xl tracking-[1.5px] text-[#000000] dark:text-white ">
-        Verify your profile and boost your scores 🚀
+        Add walk in employees and fetch data based on face recognition 🚀
       </h1>
       <div className="grid h-full grid-cols-1 gap-5 lg:!grid-cols-2">
         <div className="flex flex-col gap-y-2">
@@ -50,23 +120,39 @@ function CameraComponent({}: Props) {
           </div>
         </div>
         <div>
-          <General />
+          {isProfileFetched ? (
+            <>
+              <General />
+            </>
+          ) : (
+            <>
+              <h1 className="text-bold ml-[1%]  text-xl tracking-[1.5px] text-[#000000] dark:text-white ">
+                Profile not found! Create a new profile
+              </h1>
+              <button className="btn-primary btn">Register Employee</button>
+            </>
+          )}
         </div>
-        <div></div>
       </div>
       <div className="mt-[2%] flex flex-col gap-y-4">
-        <span className="text-black text-xl">Add Pan Card</span>
-        <input
-          type="file"
-          className="file-input-bordered file-input-primary file-input w-full max-w-xs"
-        />
-        <span className="text-black text-xl">Add Finger print</span>
-        <input
-          type="file"
-          className="file-input-bordered file-input-primary file-input w-full max-w-xs"
-        />
         <div>
-          <button className="btn-primary btn">Verify Profile</button>
+          {isProfileFetched ? (
+            <button className="btn-primary btn" onClick={verifyProfile}>
+              Fetch Profile
+            </button>
+          ) : (
+            <div className="flex gap-2">
+              <button className="btn-primary btn-error btn">
+                <RxCross2 size={30} />
+              </button>
+              <button
+                className="btn-primary btn-success btn"
+                onClick={addEmployee}
+              >
+                <AiOutlineCheck size={30} />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

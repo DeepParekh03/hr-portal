@@ -8,10 +8,47 @@ import avatar1 from "assets/img/avatars/avatar1.png";
 import avatar2 from "assets/img/avatars/avatar2.png";
 import avatar3 from "assets/img/avatars/avatar3.png";
 import EmployeeCard from "./components/EmployeeCard";
+import { useEffect, useState } from "react";
 
 const EmployeeList = () => {
+  const [employees, setEmployees] = useState([]);
+
+  const getEmployees = () => {
+    fetch("http://localhost:9000/getAllEmployees", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        res.json().then((data) => {
+          console.log(data);
+          setEmployees(getEmployeeArray(data));
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const getEmployeeArray = (employees: any) => {
+    let initialemployee = [];
+    initialemployee = employees?.map((e: any) => {
+      return {
+        id: e.id,
+        aadharID: e.aadharID,
+        img: e.img,
+        name: e.name,
+      };
+    });
+    return initialemployee;
+  };
+
+  useEffect(() => {
+    getEmployees();
+  }, []);
   return (
-    <div className="min-h-screen mt-3 grid h-full grid-cols-1 gap-5 ">
+    <div className="mt-3 grid h-full min-h-screen grid-cols-1 gap-5 ">
       <div className="col-span-1 h-fit w-full xl:col-span-1 2xl:col-span-2">
         {/* NFt Banner */}
         <Banner />
@@ -22,6 +59,17 @@ const EmployeeList = () => {
         </div>
         {/* NFTs trending card */}
         <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-3">
+          {employees.length > 0 &&
+            employees.map((e: any) => {
+              return (
+                <EmployeeCard
+                  id={e.id}
+                  title={e.name}
+                  author={e.aadharID}
+                  image={e.img}
+                />
+              );
+            })}
           <EmployeeCard
             id="1"
             title="Abstract Colors"
@@ -46,10 +94,8 @@ const EmployeeList = () => {
         </div>
 
         {/* Recenlty Added setion */}
-      
 
         {/* Recently Add NFTs */}
-        
       </div>
 
       {/* right side section */}

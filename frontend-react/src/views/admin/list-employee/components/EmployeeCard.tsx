@@ -15,7 +15,7 @@ const EmployeeCard = (props: {
   const { id, title, author, image, extra } = props;
   const viewProfile = () => {
     console.log(id);
-    navigate(`/view-employee/${id}`, { state: { id: id } });
+    navigate(`/view-profile/${id}`, { state: { id: id } });
   };
   const [heart, setHeart] = useState(true);
   return (
