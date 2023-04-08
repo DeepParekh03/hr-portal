@@ -36,7 +36,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log(user);
+      // console.log(user);
       setUser(user);
       setLoading(false);
     });
@@ -100,13 +100,16 @@ export const UserProvider = ({ children }) => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-
       Swal.fire({
         icon: "success",
         title: "Google Login Successful",
         text: "You have successfully logged in with Google.",
       }).then(() => {
-        navigate("/admin/default");
+        if (user.email === "bhavya.gor9999@gmail.com") {
+          navigate("/admin/default");
+        } else {
+          navigate("/user/default");
+        }
       });
     } catch (error) {
       Swal.fire({
