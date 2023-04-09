@@ -27,9 +27,34 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def web():
     return render_template("index.html")
 
-@app.route('/YOLO')
+@app.route('/criminal')
 def web1():
-    return render_template("newRedirect.html")
+    if request.method == 'POST':
+        # Getting image and checking for method
+        img = request.files['image']
+        if img:
+            img_loc = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(img.filename))
+            img.save(img_loc)
+            # test_image = image.load_img(img_loc, target_size=(64, 64))
+            # test_image = image.img_to_array(test_image)
+            # test_image = np.expand_dims(test_image, axis=0) 
+            test_image = './static/submitted/' + secure_filename(img.filename)
+            y = cv2.imread(test_image)
+            criminal = 0
+            directory = r'C:\Users\ARYAN\Desktop\loc\backend\static\submitted\mugshots'  
+            for filename in os.listdir(directory):
+                f = os.path.join(directory, filename)
+                if os.path.isfile(f):
+                    verification1 = DeepFace.verify(img1_path = f, img2_path = y,model_name = 'SFace' )
+                    if verification1['verified'] == True:
+                        criminal = 1
+                        break
+            if criminal == 1:
+                x = "Found in criminal database."
+            else:
+                x = "Not found in criminal database."
+        return render_template('newRedirect.html', var1=x)
+    return render_template('newRedirect.html')
 
 
 @app.route('/aadharfaceverification', methods=['POST', 'GET'])
@@ -56,10 +81,10 @@ def home2():
         # Getting image and checking for method
         img = request.files['image']
         if img:
-        #   img_loc = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(img.filename))
-        #   img.save(img_loc)
-        #   test_image = './static/submitted/' + secure_filename(img.filename)
-        #   y = cv2.imread(test_image)
+          img_loc = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(img.filename))
+          img.save(img_loc)
+          test_image = './static/submitted/' + secure_filename(img.filename)
+          y = cv2.imread(test_image)
           img = cv2.imread(r"C:\Users\ARYAN\Desktop\loc\backend\static\submitted\front.jpg")
           crop_img = img[100:250,250:550] #enter image here
           gray = cv2.cvtColor(crop_img, cv2.COLOR_BGR2GRAY)
@@ -86,9 +111,9 @@ def home3():
         if img:
             img_loc = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(img.filename))
             img.save(img_loc)
-            # test_image = image.load_img(img_loc, target_size=(64, 64))
-            # test_image = image.img_to_array(test_image)
-            # test_image = np.expand_dims(test_image, axis=0) 
+            test_image = image.load_img(img_loc, target_size=(64, 64))
+            test_image = image.img_to_array(test_image)
+            test_image = np.expand_dims(test_image, axis=0) 
             test_image = './static/submitted/' + secure_filename(img.filename)
             tampered = cv2.imread(test_image)
             og = cv2.imread(r"C:\Users\ARYAN\Desktop\loc\backend\static\submitted\original.jpg")
@@ -113,7 +138,7 @@ def home4():
             test_image = './static/submitted/' + secure_filename(img.filename)
             img2 = cv2.imread(test_image)
             destination_image = cv2.absdiff(img1, img2)
-            match = "Fingerprints Matched!"
+            match = "Fingerprint found in database!"
             unmatch = "Fingerprints Not Matched!"
             all_zeros = not np.any(destination_image)
             if all_zeros == True:
@@ -140,6 +165,8 @@ def home5():
             
         return render_template('face.html', var5=x)
     return render_template('face.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

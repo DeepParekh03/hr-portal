@@ -9,7 +9,7 @@ def face(img):
     right_part = img[:, half:] 
     cv2.imwrite('left.jpg', left_part)
     cv2.imwrite('right.jpg', right_part)
-    verification = DeepFace.verify(img1_path = r"right.jpg", img2_path = r"left.jpg")
+    verification = DeepFace.verify(img1_path = r"C:\Users\ARYAN\Desktop\loc\backend\static\submitted\testface.jpg", img2_path = r"left.jpg")
     x = verification['verified']
     return x
 
