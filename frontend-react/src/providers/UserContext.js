@@ -31,6 +31,24 @@ export const UserProvider = ({ children }) => {
     jobType: "Freelance",
   });
 
+  const [resumeData, setResumeData] = useState({
+    email: "",
+    phone: "",
+    name: "",
+    total_exp: "",
+    university: "",
+    designation: "",
+    degree: "",
+    skills: [],
+    companies: [],
+  });
+
+  const [aadharData, setAadharData] = useState({
+    name: "",
+    dob: "",
+    gender: "",
+  });
+
   const handleJobChange = (e) => {
     const { name, value } = e.target;
     setJobData({
@@ -43,6 +61,22 @@ export const UserProvider = ({ children }) => {
     const { name, value } = e.target;
     setUserData({
       ...userData,
+      [name]: value,
+    });
+  };
+
+  const handleResume = (e) => {
+    const { name, value } = e.target;
+    setResumeData({
+      ...resumeData,
+      [name]: value,
+    });
+  };
+
+  const handleAadhar = (e) => {
+    const { name, value } = e.target;
+    setAadharData({
+      ...aadharData,
       [name]: value,
     });
   };
@@ -156,6 +190,12 @@ export const UserProvider = ({ children }) => {
     jobData,
     setJobData,
     handleJobChange,
+    resumeData,
+    setResumeData,
+    aadharData,
+    setAadharData,
+    handleResume,
+    handleAadhar,
   };
 
   return (

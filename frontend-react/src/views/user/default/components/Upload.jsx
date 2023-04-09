@@ -1,11 +1,13 @@
 import { MdFileUpload } from "react-icons/md";
 import Card from "components/card";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { app, storage } from "../../../../utils/firebase-config";
 import { ref, uploadBytes } from "firebase/storage";
+import Swal from "sweetalert2";
+import { UserContext } from "providers/UserContext";
 const Upload = () => {
   const [resume, setResume] = useState(null);
-
+  const { resumeData, setResumeData } = useContext(UserContext);
   const handleUploadClick = () => {
     // Trigger a click event on the file input element
     const fileInput = document.getElementById("fileInput");
@@ -26,7 +28,31 @@ const Upload = () => {
       .catch((error) => {
         console.error("Error uploading file:", error);
       });
+
+    const formData = new FormData();
+    formData.append("resume", resume.file);
+    fetch("http://localhost:5000/resume", {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      body: formData,
+    })
+      .then((res) => {
+        console.log(res);
+        res.json().then((data) => {
+          setResumeData({ ...resumeData, data });
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
+      });
   };
+
   return (
     <Card className="grid h-full w-full grid-cols-1 gap-3 rounded-[20px] bg-white bg-clip-border p-3 font-dm shadow-3xl shadow-shadow-500 dark:!bg-navy-800 dark:shadow-none 2xl:grid-cols-11">
       <div className="col-span-5 h-full w-full rounded-xl bg-lightPrimary dark:!bg-navy-700 2xl:col-span-6">

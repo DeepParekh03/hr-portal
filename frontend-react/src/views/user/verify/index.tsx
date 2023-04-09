@@ -1,14 +1,18 @@
-import React from 'react'
-import Camera from './components/CameraComponent'
+import { UserContext } from "providers/UserContext";
+import React from "react";
+import Camera from "./components/CameraComponent";
+import VerifiedForm from "./components/VerifiedForm";
 
-type Props = {}
+type Props = {};
 
 const ProfileVerify = (props: Props) => {
-  return (
-    <div className='min-h-screen mt-[2%]'>
-        <Camera/>
-    </div>
-  )
-}
+  const { userData, setUserData } = React.useContext(UserContext);
 
-export default ProfileVerify
+  return (
+    <div className="mt-[2%] min-h-screen">
+      {userData.isVerified ? <Camera /> : <VerifiedForm />}
+    </div>
+  );
+};
+
+export default ProfileVerify;

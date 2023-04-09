@@ -50,7 +50,7 @@ const JobPostings = (props: Props) => {
           placeholder="Type here"
           className="input-bordered input-success input w-full"
           onChange={handleJobChange}
-          name="policeStation"
+          name="jobTitle"
           value={jobData.jobTitle}
         />
         <h1 className="text-bold text-xl tracking-[1.5px] ">Description</h1>
@@ -58,7 +58,7 @@ const JobPostings = (props: Props) => {
           placeholder="Type here"
           className="textarea-bordered textarea"
           onChange={handleJobChange}
-          name="policeStation"
+          name="jobDescription"
           value={jobData.jobDescription}
         />
         <h1 className="text-bold text-xl tracking-[1.5px] ">Job Salary</h1>
@@ -66,7 +66,7 @@ const JobPostings = (props: Props) => {
           type="text"
           className="input-bordered input-success input w-full"
           onChange={handleJobChange}
-          name="policeStation"
+          name="jobSalary"
           value={jobData.jobSalary}
         />
         <h1 className="text-bold text-xl tracking-[1.5px] ">
@@ -76,7 +76,7 @@ const JobPostings = (props: Props) => {
           type="text"
           className="input-bordered input-success input w-full"
           onChange={handleJobChange}
-          name="policeStation"
+          name="jobExperience"
           value={jobData.jobExperience}
         />
         <h1 className="text-bold text-xl tracking-[1.5px] ">Job Type</h1>
