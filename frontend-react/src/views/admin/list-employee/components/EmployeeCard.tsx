@@ -3,16 +3,9 @@ import { useState } from "react";
 import Card from "components/card";
 import { useNavigate } from "react-router-dom";
 
-const EmployeeCard = (props: {
-  id: any;
-  image: any;
-  title: any;
-  author: any;
-  price?: any | number;
-  extra?: any;
-}) => {
+const EmployeeCard = (props:any) => {
   const navigate = useNavigate();
-  const { id, title, author, image, extra } = props;
+  const { id, name, email, photoURL} = props;
   const viewProfile = () => {
     console.log(id);
     navigate(`/view-profile/${id}`, { state: { id: id } });
@@ -20,12 +13,12 @@ const EmployeeCard = (props: {
   const [heart, setHeart] = useState(true);
   return (
     <Card
-      extra={`flex flex-col w-full h-full !p-4 3xl:p-![18px] bg-white ${extra}`}
+      extra={`flex flex-col w-full h-full !p-4 3xl:p-![18px] bg-white`}
     >
       <div className="h-full w-full">
         <div className="relative w-full">
           <img
-            src={image}
+            src={photoURL}
             className="mb-3 h-full w-full rounded-xl 3xl:h-full 3xl:w-full"
             alt=""
           />
@@ -47,10 +40,10 @@ const EmployeeCard = (props: {
           <div className="mb-2">
             <p className="text-lg font-bold text-navy-700 dark:text-white">
               {" "}
-              {title}{" "}
+              {name}{" "}
             </p>
             <p className="mt-1 text-sm font-medium text-gray-600 md:mt-2">
-              By {author}{" "}
+              {email}{" "}
             </p>
           </div>
         </div>

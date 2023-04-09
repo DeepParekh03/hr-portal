@@ -40,17 +40,19 @@ const ListEmployee = (props: Props) => {
             </h4>
           </div>
           <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-3">
-            {/* {applicants.length > 0 &&
-              applicants.array.forEach(e:string => {
-                return (
-                  <EmployeeCard
-                    key={e.id}
-                    title={e.name}
-                    author={e.email}
-                    image={e.img}
-                  />
-                );
-              })} */}
+            {applicants.map((applicant: any) => (a:any) => {
+              I++
+              return (
+                <EmployeeCard
+                  key={I}
+                  name={a.name}
+                  email={a.email}
+                  photoURL={a.photoURL}
+                
+                />
+              );
+            })
+            }
           </div>
         </div>
       </div>
