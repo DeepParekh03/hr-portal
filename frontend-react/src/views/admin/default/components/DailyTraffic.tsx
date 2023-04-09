@@ -12,9 +12,9 @@ const DailyTraffic = () => {
             Daily Traffic
           </p>
           <p className="text-[34px] font-bold text-navy-700 dark:text-white">
-            2.579{" "}
+            30{" "}
             <span className="text-sm font-medium leading-6 text-gray-600">
-              Visitors
+              avg Visitors
             </span>
           </p>
         </div>
@@ -26,7 +26,7 @@ const DailyTraffic = () => {
         </div>
       </div>
 
-      <div className="h-[300px] w-full pt-10 pb-0">
+      <div className="h-[300px] w-full pb-0 pt-10">
         <BarChart
           chartData={barChartDataDailyTraffic}
           chartOptions={barChartOptionsDailyTraffic}
