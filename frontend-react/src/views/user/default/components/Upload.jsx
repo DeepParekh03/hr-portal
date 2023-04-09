@@ -22,7 +22,11 @@ const Upload = () => {
     const pdfRef = ref(storage, `pdfs/${resume.name}`);
     uploadBytes(pdfRef, resume.file)
       .then((snapshot) => {
-        console.log("File uploaded successfully");
+        Swal.fire({
+          icon: "success",
+          title: "Resume Uploaded",
+          text: "Your resume has been uploaded successfully",
+        });
         setResume(null);
       })
       .catch((error) => {
@@ -51,6 +55,16 @@ const Upload = () => {
     //       text: "Something went wrong!",
     //     });
     //   });
+
+    setResumeData({
+      name: "Aryan Metha",
+      email: "thatmethaguy@gmail.com",
+      phone: "1234567890",
+      skills: ["Cooking"],
+      education: ["Dj sanghvi"],
+      experience: ["JW mariott"],
+      total_exp: "2 years",
+    });
   };
 
   return (
