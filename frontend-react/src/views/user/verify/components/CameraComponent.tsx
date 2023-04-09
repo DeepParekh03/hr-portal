@@ -21,50 +21,39 @@ function CameraComponent({}: Props) {
   const [aadharVerification, setAadharVerification] = useState(false);
 
   const handlePanFileChange = (event: any) => {
-    setPan(event.target.files[0]);
+    const file = event.target.files[0];
+    console.log(event.target.files[0].name);
+    setPan(event.target.files[0].name);
+    // setPan(event.target.files[0]);
   };
 
   const handleFingerprintFileChange = (event: any) => {
-    setFingerPrint(event.target.files[0]);
+    setFingerPrint(event.target.files[0].name);
   };
 
   const handleAadharFileChange = (event: any) => {
-    setAadhar(event.target.files[0]);
+    setAadhar(event.target.files[0].name);
   };
 
   const verifyImage = () => {
     if (image) {
-      const formData = new FormData();
-      formData.append("image", image);
-      fetch("http://localhost:5000/aadharverification", {
+      fetch("http://localhost:5000/aadharocr", {
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        body: formData,
+        body: JSON.stringify({
+          aadhar,
+        }),
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data === 0) {
-            Swal.fire({
-              title: "Error!",
-              text: "Image Verification Failed",
-              icon: "error",
-              confirmButtonText: "Cool",
-            });
-          } else {
-            Swal.fire({
-              title: "Success!",
-              text: "verification successful",
-              icon: "success",
-              confirmButtonText: "Cool",
-            });
-          }
+          setAadharData({ ...aadharData, data });
         })
         .catch((err) => {
           Swal.fire({
             title: "Error!",
-            text: "Image Verification Failed",
+            text: "Aadhar ocr failed",
             icon: "error",
             confirmButtonText: "Cool",
           });
@@ -74,14 +63,11 @@ function CameraComponent({}: Props) {
   };
   const verifyAadhar = () => {
     if (aadhar) {
-      const formData = new FormData();
-      formData.append("aadhar", aadhar);
-      fetch("http://localhost:5000/fakeaadhar", {
+      fetch("http://localhost:5000/aadharocr", {
         method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        body: formData,
+        body: JSON.stringify({
+          aadhar,
+        }),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -106,14 +92,14 @@ function CameraComponent({}: Props) {
 
   const verifyPan = () => {
     if (pan) {
-      const formData = new FormData();
-      formData.append("pan", pan);
       fetch("http://localhost:5000/fakepan", {
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        body: formData,
+        body: JSON.stringify({
+          pan,
+        }),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -162,6 +148,7 @@ function CameraComponent({}: Props) {
   useEffect(() => {
     console.log({ image });
   }, [image]);
+
   return (
     <div className="flex w-full flex-col gap-5">
       <h1 className="text-bold text-3xl tracking-[1.5px] text-[#000000] dark:text-white ">

@@ -20,16 +20,21 @@ const PushAlerts = (props: Props) => {
 
   const pushNotification = () => {
     console.log(messaging);
+    const { title, text } = msgData;
+    if (title && text) {
+      Swal.fire({
+        icon: "success",
+        title: `${msgData.title}`,
+        text: "Notifations should be pushed in some time",
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: `title or text missing`,
+        text: "retry",
+      });
+    }
 
-    getToken(messaging).then((currentToken) => {
-      if (currentToken) {
-        console.log(currentToken);
-      } else {
-        console.log(
-          "No registration token available. Request permission to generate one."
-        );
-      }
-    });
     // const { title, text } = msgData;
     // if (title && text) {
     // } else {

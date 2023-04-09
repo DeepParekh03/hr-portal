@@ -57,13 +57,15 @@ const Upload = () => {
     //   });
 
     setResumeData({
-      name: "Aryan Metha",
-      email: "thatmethaguy@gmail.com",
-      phone: "1234567890",
-      skills: ["Cooking"],
-      education: ["Dj sanghvi"],
-      experience: ["JW mariott"],
-      total_exp: "2 years",
+      email: "aryanmehta765@gmail.com",
+      phone: "9137835931",
+      name: "Aryan Mehta",
+      total_exp: 5,
+      university: [],
+      designition: [],
+      degree: [],
+      skills: [":", "Bartending", " Sousse Chef"],
+      "Companies worked at": ["JW MAriot", "Bhagwati"],
     });
   };
 

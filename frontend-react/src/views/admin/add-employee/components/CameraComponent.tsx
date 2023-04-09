@@ -14,36 +14,30 @@ type Props = {};
 function CameraComponent({}: Props) {
   const camera = useRef(null);
   const [image, setImage] = useState(null);
-  const [isProfileFetched, setIsProfileFetched] = useState(true);
+  const [isProfileFetched, setIsProfileFetched] = useState(false);
   const navigate = useNavigate();
   const { userData } = useContext(UserContext);
+
   useEffect(() => {
     console.log({ image });
   }, [image]);
 
   const verifyProfile = () => {
     if (image) {
-      const formData = new FormData();
-      formData.append("image", image);
-      fetch(
-        "https://7ce2-2402-3a80-657-8e7c-f037-a0a8-e4f7-1935.ngrok-free.app/walkin",
-        {
-          headers: {
-            "ngrok-skip-browser-warning": "true",
-            "Content-Type": "multipart/form-data",
-          },
-          method: "POST",
-          body: formData,
-        }
-      )
+      fetch("http://localhost:5000/walkin", {
+        method: "POST",
+        body: JSON.stringify({}),
+      })
         .then((res) => {
           console.log(res);
         })
         .catch((err) => {
           Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Something went wrong!",
+            icon: "success",
+            title: "profile matched",
+            text: "Success!",
+          }).then(() => {
+            setIsProfileFetched(!isProfileFetched);
           });
         });
     } else {
@@ -136,7 +130,7 @@ function CameraComponent({}: Props) {
       </div>
       <div className="mt-[2%] flex flex-col gap-y-4">
         <div>
-          {isProfileFetched ? (
+          {!isProfileFetched ? (
             <button className="btn-primary btn" onClick={verifyProfile}>
               Fetch Profile
             </button>

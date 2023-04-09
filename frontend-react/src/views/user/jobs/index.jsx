@@ -73,12 +73,6 @@ const FindJobs = (props) => {
                     image={value.URL}
                   />
                 ))}
-              <JobCard
-                title="Abstract Colors"
-                author="Esthera Jackson"
-                price="0.91"
-                image={NFt3}
-              />
             </>
           )}
 

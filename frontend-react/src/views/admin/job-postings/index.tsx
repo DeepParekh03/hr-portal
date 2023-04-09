@@ -14,7 +14,8 @@ const JobPostings = (props: Props) => {
   const { jobData, setJobData, handleJobChange } = useContext(UserContext);
   const addJob = () => {
     console.log(jobData);
-    fetch("http://localhost:9000/addJob", {
+
+    fetch("https://codeshahstrahojayega-production.up.railway.app/addJob", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,8 +34,8 @@ const JobPostings = (props: Props) => {
       .catch((err) => {
         Swal.fire({
           icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
+          title: "Job adding error",
+          text: "Try again later",
         });
       });
   };
