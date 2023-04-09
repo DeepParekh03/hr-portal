@@ -29,28 +29,28 @@ const Upload = () => {
         console.error("Error uploading file:", error);
       });
 
-    const formData = new FormData();
-    formData.append("resume", resume.file);
-    fetch("http://localhost:5000/resume", {
-      method: "POST",
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      body: formData,
-    })
-      .then((res) => {
-        console.log(res);
-        res.json().then((data) => {
-          setResumeData({ ...resumeData, data });
-        });
-      })
-      .catch((err) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-        });
-      });
+    // const formData = new FormData();
+    // formData.append("resume", resume.file);
+    // fetch("http://localhost:5000/resume", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    //   body: formData,
+    // })
+    //   .then((res) => {
+    //     console.log(res);
+    //     res.json().then((data) => {
+    //       setResumeData({ ...resumeData, data });
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Oops...",
+    //       text: "Something went wrong!",
+    //     });
+    //   });
   };
 
   return (
