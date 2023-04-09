@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "650017040853",
+    "firebase_url": "https://csi-hojayega-default-rtdb.firebaseio.com",
+    "project_id": "csi-hojayega",
+    "storage_bucket": "csi-hojayega.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650017040853:android:bbfbe1514924001aa9f55c",
+        "android_client_info": {
+          "package_name": "com.example.firebasemessagingflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650017040853-c3n81qens5f2lfaudv26tm4eo2ikd3gg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB750KBzBUXPlv9UtfBDKvoZmzsTR-nt7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650017040853-c3n81qens5f2lfaudv26tm4eo2ikd3gg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650017040853:android:21af2f4eed2129aca9f55c",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650017040853-c3n81qens5f2lfaudv26tm4eo2ikd3gg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB750KBzBUXPlv9UtfBDKvoZmzsTR-nt7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650017040853-c3n81qens5f2lfaudv26tm4eo2ikd3gg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
