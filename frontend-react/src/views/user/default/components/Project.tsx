@@ -24,15 +24,15 @@ const Project = () => {
           </div>
           <div className="ml-4">
             <p className="text-base font-medium text-navy-700 dark:text-white">
-              Technology behind the Blockchain
+            Waiter, ABC Restaurant
             </p>
             <p className="mt-2 text-sm text-gray-600">
-              Project #1 .
+              2008-2012
               <a
                 className="ml-1 font-medium text-brand-500 hover:text-brand-500 dark:text-white"
                 href=" "
               >
-                See product details
+                9819728201
               </a>
             </p>
           </div>
@@ -49,15 +49,15 @@ const Project = () => {
           </div>
           <div className="ml-4">
             <p className="text-base font-medium text-navy-700 dark:text-white">
-              Technology behind the Blockchain
+              Cashier, OMW Restaurant  
             </p>
             <p className="mt-2 text-sm text-gray-600">
-              Project #1 .
+              2012-2020
               <a
                 className="ml-1 font-medium text-brand-500 hover:text-brand-500 dark:text-white"
                 href=" "
               >
-                See product details
+                9819628102
               </a>
             </p>
           </div>
@@ -74,15 +74,14 @@ const Project = () => {
           </div>
           <div className="ml-4">
             <p className="text-base font-medium text-navy-700 dark:text-white">
-              Technology behind the Blockchain
+              Waiter, Three Dreams Cafe
             </p>
             <p className="mt-2 text-sm text-gray-600">
-              Project #1 .
+              2021-2022
               <a
                 className="ml-1 font-medium text-brand-500 hover:text-brand-500 dark:text-white"
-                href=" "
               >
-                See product details
+                961951130
               </a>
             </p>
           </div>

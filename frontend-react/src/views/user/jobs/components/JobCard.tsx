@@ -56,8 +56,8 @@ const JobCard = (props: {
               {" "}
               {title}{" "}
             </p>
-            <p className="mt-1 text-sm font-medium text-gray-600 md:mt-2">
-              By {author}{" "}
+            <p className="mt-1 text-lg font-medium text-gray-600 md:mt-2">
+              {author}{" "}
             </p>
           </div>
         </div>
