@@ -81,6 +81,7 @@ const FindJobs = (props) => {
               />
             </>
           )}
+
           {fullTime && (
             <>
               <JobCard

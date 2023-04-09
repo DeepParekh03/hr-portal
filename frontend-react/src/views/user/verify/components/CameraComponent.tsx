@@ -32,7 +32,7 @@ function CameraComponent({}: Props) {
     setAadhar(event.target.files[0]);
   };
 
-  const verifyProfile = () => {
+  const verifyImage = () => {
     if (image) {
       const formData = new FormData();
       formData.append("image", image);
@@ -48,7 +48,7 @@ function CameraComponent({}: Props) {
           if (data === 0) {
             Swal.fire({
               title: "Error!",
-              text: "verification failed",
+              text: "Image Verification Failed",
               icon: "error",
               confirmButtonText: "Cool",
             });
@@ -64,13 +64,47 @@ function CameraComponent({}: Props) {
         .catch((err) => {
           Swal.fire({
             title: "Error!",
-            text: "verification failed",
+            text: "Image Verification Failed",
             icon: "error",
             confirmButtonText: "Cool",
           });
         });
       setImageVerification(!imageVerification);
     }
+  };
+  const verifyAadhar = () => {
+    if (aadhar) {
+      const formData = new FormData();
+      formData.append("aadhar", aadhar);
+      fetch("http://localhost:5000/fakeaadhar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setAadharData({ ...aadharData, data });
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: "Error!",
+            text: "Aadhar ocr failed",
+            icon: "error",
+            confirmButtonText: "Cool",
+          });
+        });
+      setAadharVerification(!aadharVerification);
+    }
+  };
+
+  const verifyFingerPrint = () => {
+    if (fingerPrint) {
+    }
+  };
+
+  const verifyPan = () => {
     if (pan) {
       const formData = new FormData();
       formData.append("pan", pan);
@@ -109,36 +143,15 @@ function CameraComponent({}: Props) {
         });
       setPanVerification(!panVerification);
     }
-    if (aadhar) {
-      const formData = new FormData();
-      formData.append("aadhar", aadhar);
-      fetch("http://localhost:5000/fakeaadhar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setAadharData({ ...aadharData, data });
-        })
-        .catch((err) => {
-          Swal.fire({
-            title: "Error!",
-            text: "Aadhar ocr failed",
-            icon: "error",
-            confirmButtonText: "Cool",
-          });
-        });
-      setAadharVerification(!aadharVerification);
-    }
+  };
+
+  const verifyProfile = () => {
     if (imageVerification && panVerification && aadharVerification) {
       setUserData({ ...userData, isVerified: true });
     } else {
       Swal.fire({
         title: "Incomplete Verification !",
-        text: "verification not complete",
+        text: "verification not complete try again sometime later",
         icon: "warning",
         confirmButtonText: "Cool",
       }).then(() => {
@@ -209,7 +222,16 @@ function CameraComponent({}: Props) {
           className="file-input-bordered file-input-primary file-input w-full max-w-xs"
           onChange={handleAadharFileChange}
         />
-        <div>
+        <div className="flex gap-4">
+          <button className="btn-primary btn" onClick={verifyImage}>
+            Verify Photo
+          </button>
+          <button className="btn-primary btn" onClick={verifyPan}>
+            Verify Pan
+          </button>
+          <button className="btn-primary btn" onClick={verifyFingerPrint}>
+            Verify Fingerprint
+          </button>
           <button className="btn-primary btn" onClick={verifyProfile}>
             Verify Profile
           </button>
