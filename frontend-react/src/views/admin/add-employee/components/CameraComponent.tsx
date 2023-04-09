@@ -50,15 +50,18 @@ function CameraComponent({}: Props) {
   };
 
   const addEmployee = () => {
-    fetch("http://localhost:9000/addEmployee", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: userData.id,
-      }),
-    })
+    fetch(
+      "https://codeshahstrahojayega-production.up.railway.app/addEmployee",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: "12345da22434",
+        }),
+      }
+    )
       .then((res) => {
         Swal.fire({
           icon: "success",

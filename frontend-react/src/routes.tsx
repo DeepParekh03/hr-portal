@@ -29,9 +29,11 @@ import {
 import { RiUserSearchFill, RiSuitcaseLine } from "react-icons/ri";
 import AddEmployee from "views/admin/add-employee";
 import { BsListStars, BsPersonPlus } from "react-icons/bs";
-import ProfileVerify from "views/user/verify";
+import ProfileVerify from "views/admin/verify-models";
 import PushAlerts from "views/admin/push-alerts";
 import ListEmployee from "views/admin/list-employee";
+import ReferEmployee from "views/admin/refer-employee";
+import { VscPreview, VscUnverified } from "react-icons/vsc";
 const routes = [
   {
     name: "Main Dashboard",
@@ -57,6 +59,14 @@ const routes = [
     secondary: true,
   },
   {
+    name: "Run verifications",
+    layout: "/admin",
+    path: "run-verifications",
+    icon: <VscUnverified className="h-6 w-6" />,
+    component: <ProfileVerify />,
+    secondary: true,
+  },
+  {
     name: "Applicants List",
     layout: "/admin",
     path: "list-applicants",
@@ -64,6 +74,7 @@ const routes = [
     component: <ListEmployee />,
     secondary: true,
   },
+
   {
     name: "Push alerts",
     layout: "/admin",
@@ -77,6 +88,14 @@ const routes = [
     path: "post-job-openings",
     icon: <MdOutlineAddHomeWork className="h-6 w-6" />,
     component: <JobPostings />,
+    secondary: true,
+  },
+  {
+    name: "Refer a employee",
+    layout: "/admin",
+    path: "refer-employees",
+    icon: <VscPreview className="h-6 w-6" />,
+    component: <ReferEmployee />,
     secondary: true,
   },
   {
