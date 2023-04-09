@@ -29,9 +29,6 @@ def whatsapp():
     # Create a Twilio MessagingResponse object
     response = MessagingResponse()
 
-    # Add a message to the response
-    # if(incoming_message == "gujurati"):
-    #     translator.translate('Please enter your name', dest='gu')
     print(incoming_message)
     incoming_message = request.form["Body"]
     # Add a message to the response
@@ -44,6 +41,8 @@ def whatsapp():
         response.message("आपने कितने साल काम किया है")
     elif(incoming_message=="5"):
         response.message("हमारे साथ पंजीकरण करने के लिए धन्यवाद ❤️")
+    else:
+        response.message("I didnt get that. Please reply with 'hindi' or 'gujurati'")
     
     
     # Send the response back to Twilio
