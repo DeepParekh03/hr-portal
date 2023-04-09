@@ -26,7 +26,7 @@ const App = () => {
       </Routes>
     );
   }
-  if (user && user.email === "bhavya.gor9999@gmail.com") {
+  if (user && user.email === "ishaan.shah@gmail.com") {
     return (
       <Routes>
         <Route path="auth/*" element={<AuthLayout />} />

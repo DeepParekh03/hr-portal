@@ -101,3 +101,25 @@ export const getUserbyID = (req, res, next) => {
       }
     );
 };
+
+export const getAllEmployees  = (req, res, next) => {
+  const db = getDatabase()
+  const employeeData = {}
+  employeeData["employees"] = []
+  onValue(ref(db, 'users/'), (snapshot) => {
+    const data = snapshot.val();
+    for (const [userid, value] of Object.entries(data)) {
+      const userpathRef = ref(db, "/users/"+userid)
+      onValue(
+        userpathRef,
+        (snapshot1) => {
+          const userData = snapshot1.val();
+          if(userData["isProfile"]==1){
+            employeeData["employees"].push(userData);
+          } 
+        }) 
+      }
+    res.status(200).json(employeeData);
+    
+  });
+}

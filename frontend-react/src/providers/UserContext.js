@@ -163,7 +163,7 @@ export const UserProvider = ({ children }) => {
             title: "Google Login Successful",
             text: "You have successfully logged in.",
           }).then(() => {
-            if (userObj.email === "bhavya.gor9999@gmail.com") {
+            if (userObj.email === "ishaan.shah@gmail.com") {
               navigate("/admin/default");
             } else {
               navigate("/user/default");

@@ -6,6 +6,7 @@ import { useContext } from "react";
 
 const Banner = () => {
   const {user} = useContext(UserContext);
+  console.log(user);
   return (
     <Card extra={"items-center w-full h-full p-[16px] bg-cover"}>
       {/* Background and profile */}
@@ -14,7 +15,7 @@ const Banner = () => {
         style={{ backgroundImage: `url(${banner})` }}
       >
         <div className="absolute -bottom-12 flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
-          <img className="h-full w-full rounded-full" src={avatar} alt="" />
+          <img className="h-full w-full rounded-full" src={user.photoURL} alt="" />
         </div>
       </div>
 
@@ -29,18 +30,18 @@ const Banner = () => {
       {/* Post followers */}
       <div className="mt-6 mb-3 flex gap-4 md:!gap-14">
         <div className="flex flex-col items-center justify-center">
-          <p className="text-2xl font-bold text-navy-700 dark:text-white">17</p>
+          <p className="text-2xl font-bold text-navy-700 dark:text-white">20</p>
           <p className="text-sm font-normal text-gray-600">Green Flags</p>
         </div>
         <div className="flex flex-col items-center justify-center">
           <p className="text-2xl font-bold text-navy-700 dark:text-white">
-            9.7K
+            15
           </p>
           <p className="text-sm font-normal text-gray-600">Yellow Flags</p>
         </div>
         <div className="flex flex-col items-center justify-center">
           <p className="text-2xl font-bold text-navy-700 dark:text-white">
-            434
+            12
           </p>
           <p className="text-sm font-normal text-gray-600">Red Flags</p>
         </div>
