@@ -16,6 +16,9 @@ function CameraComponent({}: Props) {
   const [pan, setPan] = useState(null);
   const [aadhar, setAadhar] = useState(null);
   const [fingerPrint, setFingerPrint] = useState(null);
+  const [imageVerification, setImageVerification] = useState(false);
+  const [panVerification, setPanVerification] = useState(false);
+  const [aadharVerification, setAadharVerification] = useState(false);
 
   const handlePanFileChange = (event: any) => {
     setPan(event.target.files[0]);
@@ -66,6 +69,7 @@ function CameraComponent({}: Props) {
             confirmButtonText: "Cool",
           });
         });
+      setImageVerification(!imageVerification);
     }
     if (pan) {
       const formData = new FormData();
@@ -103,6 +107,7 @@ function CameraComponent({}: Props) {
             confirmButtonText: "Cool",
           });
         });
+      setPanVerification(!panVerification);
     }
     if (aadhar) {
       const formData = new FormData();
@@ -126,8 +131,20 @@ function CameraComponent({}: Props) {
             confirmButtonText: "Cool",
           });
         });
+      setAadharVerification(!aadharVerification);
     }
-    setUserData({ ...userData, isVerified: true });
+    if (imageVerification && panVerification && aadharVerification) {
+      setUserData({ ...userData, isVerified: true });
+    } else {
+      Swal.fire({
+        title: "Incomplete Verification !",
+        text: "verification not complete",
+        icon: "warning",
+        confirmButtonText: "Cool",
+      }).then(() => {
+        setUserData({ ...userData, isVerified: true });
+      });
+    }
   };
   useEffect(() => {
     console.log({ image });

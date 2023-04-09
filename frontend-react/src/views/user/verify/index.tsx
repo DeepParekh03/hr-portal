@@ -10,7 +10,7 @@ const ProfileVerify = (props: Props) => {
 
   return (
     <div className="mt-[2%] min-h-screen">
-      {userData.isVerified ? <Camera /> : <VerifiedForm />}
+      {!userData.isVerified ? <Camera /> : <VerifiedForm />}
     </div>
   );
 };

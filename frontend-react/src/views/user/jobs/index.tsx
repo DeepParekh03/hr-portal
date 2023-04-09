@@ -65,6 +65,9 @@ const FindJobs = (props: Props) => {
         <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-3">
           {freelance && (
             <>
+              {jobs && jobs.forEach((key,value) => {
+                
+              });)
               <JobCard
                 title="Abstract Colors"
                 author="Esthera Jackson"
