@@ -5,9 +5,7 @@ import NFt2 from "assets/img/nfts/Nft2.png";
 import NFt4 from "assets/img/nfts/Nft4.png";
 import NFt3 from "assets/img/nfts/Nft3.png";
 
-type Props = {};
-
-const FindJobs = (props: Props) => {
+const FindJobs = (props) => {
   const [freelance, setFreelance] = React.useState(true);
   const [fullTime, setFullTime] = React.useState(false);
 
@@ -65,33 +63,28 @@ const FindJobs = (props: Props) => {
         <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-3">
           {freelance && (
             <>
-              {jobs && jobs.forEach((key,value) => {
-                
-              });)
+              {jobs &&
+                Object.values(jobs).map((value) => (
+                  <JobCard
+                    key={value.id} // Make sure to use a unique key for each component
+                    title={value.Desc}
+                    author={value.Position}
+                    price={value.Tags}
+                    image={value.URL}
+                  />
+                ))}
               <JobCard
                 title="Abstract Colors"
                 author="Esthera Jackson"
                 price="0.91"
                 image={NFt3}
               />
-              <JobCard
-                title="ETH AI Brain"
-                author="Nick Wilson"
-                price="0.7"
-                image={NFt2}
-              />
-              <JobCard
-                title="Mesh Gradients"
-                author="Will Smith"
-                price="2.91"
-                image={NFt4}
-              />
             </>
           )}
           {fullTime && (
             <>
               <JobCard
-                title="Abstract Colors"
+                title="Grandmama's Kitchen"
                 author="Esthera Jackson"
                 price="0.91"
                 image={NFt3}

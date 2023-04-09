@@ -12,7 +12,7 @@ import SignIn from "views/auth/SignIn";
 
 //user imports
 import ProfileUser from "views/user/default";
-import FindJobs from "views/user/jobs";
+import FindJobs from "../src/views/user/jobs/index";
 import JobPostings from "views/admin/job-postings";
 // Icon Imports
 import {

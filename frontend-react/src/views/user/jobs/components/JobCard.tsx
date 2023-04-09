@@ -3,15 +3,14 @@ import { useState } from "react";
 import Card from "components/card";
 
 const JobCard = (props: {
-  image: string;
-  title: string;
-  author: string;
-  
+  image: any;
+  title: any;
+  author: any;
   download?: string;
   price: string | number;
   extra?: string;
 }) => {
-  const { title, author, price, image, extra } = props;
+  const { title, author, image, extra } = props;
   const [heart, setHeart] = useState(true);
   return (
     <Card
@@ -26,7 +25,7 @@ const JobCard = (props: {
           />
           <button
             onClick={() => setHeart(!heart)}
-            className="absolute top-3 right-3 flex items-center justify-center rounded-full bg-white p-2 text-brand-500 hover:cursor-pointer"
+            className="absolute right-3 top-3 flex items-center justify-center rounded-full bg-white p-2 text-brand-500 hover:cursor-pointer"
           >
             <div className="flex h-full w-full items-center justify-center rounded-full text-xl hover:bg-gray-50 dark:text-navy-900">
               {heart ? (
@@ -50,7 +49,7 @@ const JobCard = (props: {
           </div>
         </div>
         <div className="flex  md:flex-col md:items-end lg:flex-row lg:justify-between xl:flex-col 2xl:items-end 3xl:flex-row 3xl:items-center 3xl:justify-between">
-          <button className="linear rounded-[20px] bg-brand-900 px-4 py-2 text-base font-medium text-white transition duration-200 hover:bg-brand-800 active:bg-brand-700 dark:bg-brand-400 dark:hover:bg-brand-300 dark:active:opacity-90 float-right">
+          <button className="linear float-right rounded-[20px] bg-brand-900 px-4 py-2 text-base font-medium text-white transition duration-200 hover:bg-brand-800 active:bg-brand-700 dark:bg-brand-400 dark:hover:bg-brand-300 dark:active:opacity-90">
             Send application
           </button>
         </div>
