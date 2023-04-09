@@ -20,6 +20,7 @@ export const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState({
     userEmail: "",
     userPassword: "",
+    isVerified: false,
   });
 
   const [jobData, setJobData] = useState({

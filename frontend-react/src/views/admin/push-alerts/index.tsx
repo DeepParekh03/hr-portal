@@ -20,6 +20,7 @@ const PushAlerts = (props: Props) => {
 
   const pushNotification = () => {
     console.log(messaging);
+
     getToken(messaging).then((currentToken) => {
       if (currentToken) {
         console.log(currentToken);
