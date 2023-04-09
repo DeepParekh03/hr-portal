@@ -4,12 +4,12 @@ import Card from "components/card";
 import { useNavigate } from "react-router-dom";
 
 const EmployeeCard = (props: {
-  id: string;
-  image: string;
-  title: string;
-  author: string;
-  price?: string | number;
-  extra?: string;
+  id: any;
+  image: any;
+  title: any;
+  author: any;
+  price?: any | number;
+  extra?: any;
 }) => {
   const navigate = useNavigate();
   const { id, title, author, image, extra } = props;

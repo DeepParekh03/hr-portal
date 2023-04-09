@@ -103,8 +103,8 @@ export const barChartOptionsDailyTraffic = {
 };
 
 export const pieChartOptions = {
-  labels: ["Your files", "System", "Empty"],
-  colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
+  labels: ["Green Flag","Yellow Flag", "Orange Flag", "Red Flag"],
+  colors: ["#4318FF", "#6AD2FF", "#EFF4FB", "#FF0000"],
   chart: {
     width: "50px",
   },
