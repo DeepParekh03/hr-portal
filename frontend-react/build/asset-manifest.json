@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.26ea160a.css",
+    "main.js": "/static/js/main.1c0feeef.js",
+    "static/media/login.jpeg": "/static/media/login.2b691dfd3e5f8e234cda.jpeg",
+    "static/media/NftBanner1.png": "/static/media/NftBanner1.87062366f75bedd52bd2.png",
+    "static/media/banner.png": "/static/media/banner.ef572d78f29b0fee0a09.png",
+    "static/media/Nft2.png": "/static/media/Nft2.7897c45d2601ee3adfb5.png",
+    "static/media/avatar11.png": "/static/media/avatar11.1060b63041fdffa5f8ef.png",
+    "static/media/Nft4.png": "/static/media/Nft4.5fc37877b25c9fb9a52d.png",
+    "static/media/Nft3.png": "/static/media/Nft3.3b3e6a4b3ada7618de6c.png",
+    "static/media/avatar4.png": "/static/media/avatar4.54d5c1de851c273b2cd9.png",
+    "static/media/image1.png": "/static/media/image1.5d02805328278985e71f.png",
+    "static/media/image3.png": "/static/media/image3.847e2837e715cbf5e4cc.png",
+    "static/media/image2.png": "/static/media/image2.556e407e0cd69698d537.png",
+    "index.html": "/index.html",
+    "static/media/checked.svg": "/static/media/checked.6cb596af2bbf729dfac3.svg",
+    "main.26ea160a.css.map": "/static/css/main.26ea160a.css.map",
+    "main.1c0feeef.js.map": "/static/js/main.1c0feeef.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.26ea160a.css",
+    "static/js/main.1c0feeef.js"
+  ]
+}

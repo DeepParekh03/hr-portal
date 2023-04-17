@@ -34,6 +34,8 @@ import PushAlerts from "views/admin/push-alerts";
 import ListEmployee from "views/admin/list-employee";
 import ReferEmployee from "views/admin/refer-employee";
 import { VscPreview, VscUnverified } from "react-icons/vsc";
+import ViewVideo from "views/admin/view-mp4";
+import { AiOutlineVideoCameraAdd } from "react-icons/ai";
 const routes = [
   {
     name: "Main Dashboard",
@@ -97,6 +99,13 @@ const routes = [
     icon: <VscPreview className="h-6 w-6" />,
     component: <ReferEmployee />,
     secondary: true,
+  },
+  {
+    name:"MP4 play",
+    layout: "/admin",
+    path: "mp4-play",
+    icon: <AiOutlineVideoCameraAdd className="h-6 w-6" />,
+    component: <ViewVideo />,
   },
   {
     name: "User Profile",
